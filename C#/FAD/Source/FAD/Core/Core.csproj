@@ -1,0 +1,153 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{362406EA-B301-4AE2-BE29-380FE5E81CC1}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Core</RootNamespace>
+    <AssemblyName>Core</AssemblyName>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ChangeStateColor.cs" />
+    <Compile Include="ChangeTextColor.cs" />
+    <Compile Include="Command.cs" />
+    <Compile Include="Comment.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Comment.Designer.cs">
+      <DependentUpon>Comment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CommentLine.cs" />
+    <Compile Include="FA.cs" />
+    <Compile Include="FADPlayer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FADPlayer.Designer.cs">
+      <DependentUpon>FADPlayer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FAPlotter.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FAPlotter.Designer.cs">
+      <DependentUpon>FAPlotter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormFADPlayer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormFADPlayer.Designer.cs">
+      <DependentUpon>FormFADPlayer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormInput.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormInput.Designer.cs">
+      <DependentUpon>FormInput.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PointC.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="SetComment.cs" />
+    <Compile Include="State.cs" />
+    <Compile Include="Step.cs" />
+    <Compile Include="Text.cs" />
+    <Compile Include="Transition.cs" />
+    <Compile Include="XmlColor.cs" />
+    <Compile Include="XmlFont.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Comment.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>Comment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FADPlayer.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FADPlayer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FAPlotter.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FAPlotter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormFADPlayer.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FormFADPlayer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormInput.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FormInput.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <SubType>Designer</SubType>
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Delete.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Select.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Transition.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\State.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\New.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Open.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Save.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Previous.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Next.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Reset.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

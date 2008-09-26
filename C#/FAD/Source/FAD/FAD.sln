@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FAD", "FAD\FAD.csproj", "{034872D8-F049-48B3-9916-74851EA838F1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "Core\Core.csproj", "{362406EA-B301-4AE2-BE29-380FE5E81CC1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{034872D8-F049-48B3-9916-74851EA838F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{034872D8-F049-48B3-9916-74851EA838F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{034872D8-F049-48B3-9916-74851EA838F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{034872D8-F049-48B3-9916-74851EA838F1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{362406EA-B301-4AE2-BE29-380FE5E81CC1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{362406EA-B301-4AE2-BE29-380FE5E81CC1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{362406EA-B301-4AE2-BE29-380FE5E81CC1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{362406EA-B301-4AE2-BE29-380FE5E81CC1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
