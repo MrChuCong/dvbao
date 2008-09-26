@@ -1,0 +1,87 @@
+/*
+
+  THIS CODE AND INFORMATION IS PROVIDED "AS IS" WITHOUT WARRANTY OF
+
+  ANY KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO
+
+  THE IMPLIED WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A
+
+  PARTICULAR PURPOSE.
+
+  
+
+    This is "Sample Code" and is distributable subject to the terms of the end user license agreement.
+
+*/
+
+// ****************************************************************************
+// FILE: dvoraksip.idl
+// ABTRACT: Idl file for describing IInputMethod Interface in DVORAKSIP library
+// ****************************************************************************
+
+import "oaidl.idl";
+import "ocidl.idl";
+
+[
+	uuid(5863CFFB-C83A-45A8-A1F6-6A87C05C1275),
+	version(1.0),
+	helpstring("dvoraksip 1.0 Type Library")
+]
+library DVORAKSIPLib
+{
+    import "oaidl.idl";
+    import "ocidl.idl";
+    import "sip_api.idl";
+
+
+    //
+    // ImInfo provided by the IM.
+    //
+    typedef struct _tagImInfo {
+        DWORD cbSize;
+        HANDLE hImageNarrow;
+        HANDLE hImageWide;
+        int iNarrow;
+        int iWide;
+        DWORD fdwFlags;
+        RECT rcSipRect;
+    } IMINFO;
+
+
+    [ uuid(42429669-ae04-11d0-a4f8-00aa00a749b9), helpstring("IIMCallback") ]
+
+    interface IIMCallback : IUnknown
+    {                
+      [id(0)] HRESULT SetImInfo( IMINFO *pimi );  
+      [id(1)] HRESULT SendVirtualKey( BYTE bVK, DWORD dwFlags );  
+      [id(2)] HRESULT SendCharEvents( UINT uVK, UINT uKeyFlags, UINT uChars, UINT *puShift, UINT *puChars );  
+      [id(3)] HRESULT SendString( BSTR ptszStr, DWORD dwChars );  
+    }
+
+
+    [  uuid(42429666-ae04-11d0-a4f8-00aa00a749b9), helpstring("IInputMethod")  ]
+
+    interface IInputMethod : IUnknown
+    {                
+      [id(0)] HRESULT Select([in] HWND hwndSip );  
+      [id(1)] HRESULT Deselect(void);  
+      [id(2)] HRESULT Showing(void);  
+      [id(3)] HRESULT Hiding(void);  
+      [id(4)] HRESULT GetInfo([out] IMINFO *pimi );  
+      [id(5)] HRESULT ReceiveSipInfo([in] SIPINFO *psi);  
+      [id(6)] HRESULT RegisterCallback([in] IIMCallback* lpIMCallback);  
+      [id(7)] HRESULT GetImData([in] DWORD dwSize, [out] LPVOID pvImData);  
+      [id(8)] HRESULT SetImData([in] DWORD dwSize, [in] LPVOID pvImData);  
+      [id(9)] HRESULT UserOptionsDlg([in] HWND hwndParent);
+    }
+
+
+    [ uuid(42429695-ae04-11d0-a4f8-00aa00a749b9) ]
+    
+    coclass CMSDvorakIm
+    {
+        [default] interface IInputMethod;
+    };      
+
+};
+
