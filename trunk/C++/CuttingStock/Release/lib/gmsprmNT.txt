@@ -1,0 +1,5 @@
+* entries required by CMEX, put in by gams.exe:
+* SYSDIR
+* SCRDIR
+* SCRIPTNEXT
+* INPUT
