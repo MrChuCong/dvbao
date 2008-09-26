@@ -1,0 +1,400 @@
+*
+* optgams.def
+*
+
+EolOnly immediate EolFlag 1 1 Single key-value pairs (immediate switch)
+Restart string 0 "" 1 1 Restart file
+Input string 0 "" 1 1 Input file
+Output string 0 "" 1 1 Output file
+Save string 0 "" 1 1 Save file
+Symbol string 0 "" 1 1 Symbol table file
+XSave string 0 "" 1 1 Write compressed save file
+Expand string 0 "" 1 1 Expanded (include) input file name
+PageWidth integer 0 123 0 maxint 1 1 Output file page width
+PageSize integer 0 78 0 maxint 1 1 Output file page size
+PageContr enumint 0 3 1 1 Output file page control option
+ 0 1 no page control, with padding
+ 1 1 FORTRAN style line printer format
+ 2 1 no page control, no padding
+ 3 1 Formfeed character for new page
+Action enumstr 0 "CE" 1 1 Gams processing requests
+ "R" 1 Restart After Solve
+ "C" 1 CompileOnly
+ "E" 1 ExecuteOnly
+ "CE" 1 Compile and Execute
+ "G" 1 Glue Code Generation
+ "GT" 1 Trace Report
+SubSys string 0 "" 1 2 Name of subsystem configuration file
+ErrNam string 0 "" 1 1 Name of error message file
+ScrDir string 0 "" 1 1 Scratch directory
+ScrNam string 0 "" 1 1 Work file names stem
+SysDir string 0 "" 1 1 GAMS system directory
+CurDir string 0 "" 1 1 Current directory
+WorkDir string 0 "" 1 1 Working directory
+PutDir string 0 "" 1 1 Put file directory
+GridDir string 0 "" 1 1 Grid file directory
+ScriptNext string 0 "" 1 2 Script mailbox file name (GAMSNEXT)
+ScriptExit string 0 "" 1 2 Program or script to be executed at the end of a GAMS run (as is)
+ScriptFrst string 0 "" 1 2 First line to be written to GAMSNEXT file.
+LogLine enumint 0 2 1 1 Amount of line tracing to the log file
+ 0 1 no line tracing
+ 1 1 minimum line tracing
+ 2 1 automatic and visually pleasing
+LogOption enumint 0 1 1 1 Log option
+ 0 1 no log output
+ 1 1 log output to screen (console)
+ 2 1 log output to logfile
+ 3 1 log output to standard output
+LogFile string 0 "" 1 1 Log file name
+Trace string 0 "" 1 1 Trace file name
+AppendOut enumint 0 0 1 1 Output file append option
+ 0 1 reset listing file
+ 1 1 append to listing file
+ 2 1 redirect to standard output
+ 3 1 redirect to stderr
+AppendLog enumint 0 0 1 1 Log file append option
+ 0 1 reset log file
+ 1 1 append to logfile
+StepSum enumint 0 0 1 1 Summary of computing resources used by job steps
+ 0 1 no step sum
+ 1 1 step summary printed
+MultiPass enumint 0 0 1 1 Multipass facility
+ 0 1 standard compilation
+ 1 1 check-out compilation
+Suppress enumint 0 0 1 1 Compiler listing option
+ 0 1 standard compiler listing
+ 1 1 suppress compiler listing
+DFormat enumint 0 0 1 1 Date format
+ 0 1 date as mm/dd/yy
+ 1 1 date as dd.mm.yy
+ 2 1 date as yy-mm-dy
+TFormat enumint 0 0 1 1 Time format
+ 0 1 time as hh:mm:ss
+ 1 1 time as hh.mm.ss
+TabIn integer 0 8 0 maxint 1 1 Option to set tab setting (0 mean tabs are not allowed)
+CtrlZ integer 0 0 0 maxint 1 3 enable reading control Z
+CtrlM integer 0 0 0 maxint 1 3 enable flexible line ending
+SolverCntr string 0 "" 1 2 Solver control file name
+SolverMatr string 0 "" 1 2 Solver matrix file name
+SolverInst string 0 "" 1 2 Solver instruction file name
+SolverStat string 0 "" 1 2 Solver status file name
+SolverSolu string 0 "" 1 2 Solver solution file name
+SolverDict string 0 "" 1 2 Solver dictionary file name
+SolverDOpt integer 0 0 0 maxint 1 2 MYSTERY option
+PoolUse integer 0 0 0 maxint 1 3 Manage memory pools
+PoolFree1 integer 0 0 0 maxint 1 3 Manage memory pools N
+PoolFree2 integer 0 0 0 maxint 1 3 Manage memory pools N
+PoolFree3 integer 0 0 0 maxint 1 3 Manage memory pools N
+PoolFree4 integer 0 0 0 maxint 1 3 Manage memory pools N
+PoolFree5 integer 0 0 0 maxint 1 3 Manage memory pools N
+PoolFree6 integer 0 0 0 maxint 1 3 Manage memory pools N
+PoolFree7 integer 0 0 0 maxint 1 3 Manage memory pools N
+CodeX integer 0 0 0 maxint 1 3 Controls the allocation of executable code
+Case enumint 0 0 1 1 Output case option
+ 0 1 write listing file in mixed case
+ 1 1 write listing file in upper case only
+G205 integer 0 0 0 maxint 1 1 Use Gams version 2.05 syntax
+License string 0 "" 1 1 Use alternative license file
+TopMargin integer 0 0 0 maxint 1 1 Output file page top margin
+LeftMargin integer 0 0 0 maxint 1 1 Output file page left margin
+BotMargin integer 0 0 0 maxint 1 1 Output file page bottom margin.Bottom margin. Lines added at the end of a page.
+DumpParms enumint 0 0 1 1 GAMS parameter logging
+ 0 1 no logging
+ 1 1 lists accepted parameters
+ 2 1 log of file operations plus list of accepted parameters
+NoCheck integer 0 0 0 maxint 1 1 Ignore errors
+NoCr integer 0 0 0 maxint 1 1 Suppress the copyright message
+Profile integer 0 0 0 maxint 1 1 Execution profiling
+InputDir1 string 0 "" 1 1 Input file directory number N
+InputDir2 string 0 "" 1 1 Input file directory number N
+InputDir3 string 0 "" 1 1 Input file directory number N
+InputDir4 string 0 "" 1 1 Input file directory number N
+InputDir5 string 0 "" 1 1 Input file directory number N
+InputDir6 string 0 "" 1 1 Input file directory number N
+InputDir7 string 0 "" 1 1 Input file directory number N
+InputDir8 string 0 "" 1 1 Input file directory number N
+InputDir9 string 0 "" 1 1 Input file directory number N
+InputDir10 string 0 "" 1 1 Input file directory number N
+InputDir11 string 0 "" 1 1 Input file directory number N
+InputDir12 string 0 "" 1 1 Input file directory number N
+InputDir13 string 0 "" 1 1 Input file directory number N
+InputDir14 string 0 "" 1 1 Input file directory number N
+InputDir15 string 0 "" 1 1 Input file directory number N
+InputDir16 string 0 "" 1 1 Input file directory number N
+InputDir17 string 0 "" 1 1 Input file directory number N
+InputDir18 string 0 "" 1 1 Input file directory number N
+InputDir19 string 0 "" 1 1 Input file directory number N
+InputDir20 string 0 "" 1 1 Input file directory number N
+InputDir21 string 0 "" 1 1 Input file directory number N
+InputDir22 string 0 "" 1 1 Input file directory number N
+InputDir23 string 0 "" 1 1 Input file directory number N
+InputDir24 string 0 "" 1 1 Input file directory number N
+InputDir25 string 0 "" 1 1 Input file directory number N
+InputDir26 string 0 "" 1 1 Input file directory number N
+InputDir27 string 0 "" 1 1 Input file directory number N
+InputDir28 string 0 "" 1 1 Input file directory number N
+InputDir29 string 0 "" 1 1 Input file directory number N
+InputDir30 string 0 "" 1 1 Input file directory number N
+InputDir31 string 0 "" 1 1 Input file directory number N
+InputDir32 string 0 "" 1 1 Input file directory number N
+InputDir33 string 0 "" 1 1 Input file directory number N
+InputDir34 string 0 "" 1 1 Input file directory number N
+InputDir35 string 0 "" 1 1 Input file directory number N
+InputDir36 string 0 "" 1 1 Input file directory number N
+InputDir37 string 0 "" 1 1 Input file directory number N
+InputDir38 string 0 "" 1 1 Input file directory number N
+InputDir39 string 0 "" 1 1 Input file directory number N
+InputDir40 string 0 "" 1 1 Input file directory number N
+LibIncDir string 0 "" 1 1 LibInclude directory
+SysIncDir string 0 "" 1 1 SysInclude directory
+User1 string 0 "" 1 1 User string N
+User2 string 0 "" 1 1 User string N
+User3 string 0 "" 1 1 User string N
+User4 string 0 "" 1 1 User string N
+User5 string 0 "" 1 1 User string N
+ForceWork integer 0 0 0 maxint 1 1 Force reading of workfile with error counts > 0
+CErr integer 0 0 0 maxint 1 1 Compilation will stop after n errors (cerr=0 mean no error limit)
+FErr string 0 "" 1 1 Alternative error message file
+OptFile integer 0 0 0 maxint 1 2 Default option file
+FSave integer 0 0 0 maxint 1 1 Force workfile save
+NlCon integer 0 0 0 maxint 1 3 Nonlinear instructions search length
+DumpOpt integer 0 0 0 maxint 1 1 Writes preprocessed input to the file input.dmp
+ErrMsg enumint 0 0 1 1 Placing of compilation error messages
+ 0 1 error messages at the end of compiler listing
+ 1 1 error messages immediately following the error line
+ 2 1 no error messages
+Opt integer 0 0 0 maxint 1 1 Fold constant $ expressions
+RelPath enumint 0 0 1 1 Processing of relative path
+ 0 1 expand relative path
+ 1 1 do not expand relative path
+GLanguage integer 0 0 0 maxint 1 3
+GFinclude integer 0 0 0 maxint 1 3
+UnitType string 0 "" 1 3
+GFImplicit integer 0 0 0 maxint 1 3
+GFExt integer 0 0 0 maxint 1 3
+Error immediate Message 1 1 Force a parameter error with message
+StringChk enumint 0 0 1 1 String substitution options
+ 0 1 no substitution if symbol undefined and no error
+ 1 1 error if symbol undefined
+ 2 1 remove entire symbol reference if undefined and no error
+Reference string 0 "" 1 1 Symbol reference file
+OptDir string 0 "" 1 2 Option file directory
+ExecErr integer 0 0 0 maxint 1 1 Maximum number of execution errors
+ParmFile immediate ReadFile 1 1 Parameter include file name
+ErrorLog integer 0 0 0 maxint 1 1 Error messages lines written to the log file
+LimRow integer 0 3 0 maxint 1 2 Maximum number of rows listen in one equation block
+LimCol integer 0 3 0 maxint 1 2 Maximum number of columns listed in one variable block
+CharSet integer 0 1 0 maxint 1 1 Character set flag
+Keep integer 0 0 0 maxint 1 1 Do not delete scratch files
+LP string 0 "" 1 2 Linear Program - default solver
+MIP string 0 "" 1 2 Mixed Integer Program - default solver
+RMIP string 0 "" 1 2 Relaxed Mixed Integer Program - default solver
+NLP string 0 "" 1 2 NonLinear Program - default solver
+MCP string 0 "" 1 2 Mixed Complementarity Problems - default solver
+MPEC string 0 "" 1 2 Mathematical Program with Equilibrium Constraints - default solver
+RMPEC string 0 "" 1 2 Relaxed Mathematical Program with Equilibrium Constraints - default solver
+CNS string 0 "" 1 2 Constraint Nonlinear System - default solver
+DNLP string 0 "" 1 2 Discountinuous derivative Nonlinear Program - default solver
+RMINLP string 0 "" 1 2 Relaxed Mixed Integer Nonlinear Program - default solver
+MINLP string 0 "" 1 2 Mixed Integer Nonlinear Program - default solver
+QCP string 0 "" 1 2 Quadratically Constrained Program - default solver
+MIQCP string 0 "" 1 2 Mixed Integer Quadratically Constrained Program - default solver
+RMIQCP string 0 "" 1 2 Relaxed Mixed Integer Quadratically Constrained Program - default solver
+IDE enumint 0 0 1 1 Integrated Development Environment flavor
+ 0 1 unknown environment
+ 1 1 runs under GAMS IDE
+TraceOpt integer 0 0 0 maxint 1 1 Trace file format option
+GDX string 0 "" 1 1 Gams data exchange file name
+IterLim integer 0 10000 0 maxint 1 2 Iteration limit solver default
+DomLim integer 0 0 0 maxint 1 2 Domain violation limit solver default
+ResLim double 0 1000 0 maxdouble 1 2 Resource (CPU) solver default limit
+OptCR double 0 0.1 0 maxdouble 1 2 Relative Optimality criterion solver default
+OptCA double 0 0 0 maxdouble 1 2 Absolute Optimality criterion solver default
+SysOut integer 0 0 0 maxint 1 2 Solver Status file reporting option
+SolPrint integer 0 1 0 maxint 1 2 Solution report print option
+Bratio double 0 0.25 0 maxdouble 1 2 Basis acceptance threshold
+HoldFixed enumint 0 0 1 2 Treat fixed variables as constants
+ 0 1 override the internal hold fixed to 0
+ 1 1 override the internal holdfixed to 1
+NodLim integer 0 999999999 0 maxint 1 2 Node limit solver default
+WorkFactor double 0 1.0 0 maxdouble 1 2 Work space multiplier for some solvers
+WorkSpace double 0 0 0 maxdouble 1 2 Work space for some solvers
+ForLim integer 0 999999999 0 maxint 1 1 Gams looping limit
+Seed integer 0 3141 0 maxint 1 1 Random number seed
+On115 integer 0 0 0 maxint 1 1 Start compilation with on115 syntax
+ExecMode integer 0 0 0 maxint 1 1 Limits on external programs that are allowed to be executed
+PLicense string 0 "" 1 1 Privacy license file name
+CheckWork integer 0 0 0 maxint 1 1
+JobTrace string 0 "" 1 1 Job trace string
+Warnings integer 0 999999999 0 maxint 1 1 Number of warnings permitted
+TraceLevel integer 0 0 0 maxint 1 1 Solvestat threshold used in conjunction with a=GT
+SetType integer 0 0 0 maxint 1 3 used to set the type of --keys
+Timer integer 0 0 0 maxint 1 1 CMEX instruction timer threshold in milli seconds
+FileCase integer 0 0 0 maxint 1 1 Casing of file names for new names
+SavePoint integer 0 0 0 maxint 1 2 Save solver point in GDX file
+SolveLink enumint 0 0 1 2 Solver link options 0 save 1 script 2 module
+ 0 1 save and restart for each solve
+ 1 1 call solvers via script
+ 2 1 spawn solver module
+ 3 1 submit to solution server and continue
+ 4 1 submit to solution server and and wait
+ 5 0 call solver library
+Sys11 enumint 0 0 1 1 Dynamic resorting flag
+ 0 1 automatic optimization taking size into account
+ 1 1 no optimization
+ 2 1 always optimize ignoring size
+ZeroRes double 0 0 0 maxdouble 1 1 The results of certain operations will be set to zero
+ZeroResRep integer 0 0 0 maxint 1 1 Report underflow as a warning
+HeapLimit double 0 1e20 0 maxdouble 1 1 Maximum Heap size allowed
+ScrExt string 0 "scr" 1 1 Scratch extension to be used with temporary files
+RunDir string 0 "" 1 1 Run or Process Directory
+*
+* multi list section
+*
+InputDir multilist -1 1 1 Input file directories
+    InputDir1 InputDir2 InputDir3 InputDir4 InputDir5 InputDir6 InputDir7 InputDir8 InputDir9 InputDir10 InputDir11 InputDir12 InputDir13 InputDir14 InputDir15 InputDir16 InputDir17 InputDir18 InputDir19 InputDir20 InputDir21 InputDir22 InputDir23
+    InputDir24 InputDir25 InputDir26 InputDir27 InputDir28 InputDir29 InputDir30 InputDir31 InputDir32 InputDir33 InputDir34 InputDir35 InputDir36 InputDir37 InputDir38 InputDir39 InputDir40
+*
+* synonym section
+*
+EY synonym EolOnly
+R synonym Restart
+I synonym Input
+O synonym Output
+S synonym Save
+XS synonym XSave
+EF synonym Expand
+PW synonym PageWidth
+PS synonym PageSize
+PC synonym PageContr
+A synonym Action
+SD synonym ScrDir
+SN synonym ScrNam
+CDir synonym CurDir
+WDir synonym WorkDir
+PDir synonym PutDir
+GDir synonym GridDir
+SCRIPT synonym ScriptNext
+SL synonym ScriptExit
+SF synonym ScriptFrst
+LL synonym LogLine
+lo synonym LogOption
+LF synonym LogFile
+AO synonym AppendOut
+AL synonym AppendLog
+MP synonym MultiPass
+DF synonym DFormat
+TF synonym TFormat
+SCNTR synonym SolverCntr
+SMATR synonym SolverMatr
+SINST synonym SolverInst
+SSTAT synonym SolverStat
+SSOLU synonym SolverSolu
+SDICT synonym SolverDict
+SDOPT synonym SolverDOpt
+PU synonym PoolUse
+PF1 synonym PoolFree1
+PF2 synonym PoolFree2
+PF3 synonym PoolFree3
+PF4 synonym PoolFree4
+PF5 synonym PoolFree5
+PF6 synonym PoolFree6
+PF7 synonym PoolFree7
+CX synonym CodeX
+TM synonym TopMargin
+LM synonym LeftMargin
+BM synonym BotMargin
+DP synonym DumpParms
+IDIR1 synonym InputDir1
+IDIR2 synonym InputDir2
+IDIR3 synonym InputDir3
+IDIR4 synonym InputDir4
+IDIR5 synonym InputDir5
+IDIR6 synonym InputDir6
+IDIR7 synonym InputDir7
+IDIR8 synonym InputDir8
+IDIR9 synonym InputDir9
+IDIR10 synonym InputDir10
+IDIR11 synonym InputDir11
+IDIR12 synonym InputDir12
+IDIR13 synonym InputDir13
+IDIR14 synonym InputDir14
+IDIR15 synonym InputDir15
+IDIR16 synonym InputDir16
+IDIR17 synonym InputDir17
+IDIR18 synonym InputDir18
+IDIR19 synonym InputDir19
+IDIR20 synonym InputDir20
+IDIR21 synonym InputDir21
+IDIR22 synonym InputDir22
+IDIR23 synonym InputDir23
+IDIR24 synonym InputDir24
+IDIR25 synonym InputDir25
+IDIR26 synonym InputDir26
+IDIR27 synonym InputDir27
+IDIR28 synonym InputDir28
+IDIR29 synonym InputDir29
+IDIR30 synonym InputDir30
+IDIR31 synonym InputDir31
+IDIR32 synonym InputDir32
+IDIR33 synonym InputDir33
+IDIR34 synonym InputDir34
+IDIR35 synonym InputDir35
+IDIR36 synonym InputDir36
+IDIR37 synonym InputDir37
+IDIR38 synonym InputDir38
+IDIR39 synonym InputDir39
+IDIR40 synonym InputDir40
+IDIR synonym InputDir
+LDIR synonym LibIncDir
+SDIR synonym SysIncDir
+U1 synonym User1
+U2 synonym User2
+U3 synonym User3
+U4 synonym User4
+U5 synonym User5
+FW synonym ForceWork
+GLAN synonym GLanguage
+GFINC synonym GFinclude
+UT synonym UnitType
+GFIMP synonym GFImplicit
+RF synonym Reference
+PF synonym ParmFile
+ER synonym ErrorLog
+JT synonym JobTrace
+TL synonym TraceLevel
+ST synonym SetType
+SP synonym SavePoint
+HL synonym HeapLimit
+SE synonym ScrExt
+RDir synonym RunDir
+*
+* deprecated section
+*
+ver144 deprecated
+ CtrlZ not needed anymore - will be ignored
+ CtrlM all line endings are recognized
+ PoolUse not needed anymore - will be ignored
+ PoolFree1 not needed anymore - will be ignored
+ PoolFree2 not needed anymore - will be ignored
+ PoolFree3 not needed anymore - will be ignored
+ PoolFree4 not needed anymore - will be ignored
+ PoolFree5 not needed anymore - will be ignored
+ PoolFree6 not needed anymore - will be ignored
+ PoolFree7 not needed anymore - will be ignored
+ CodeX used to override automatic allocation
+ NlCon not needed anymore - will be ignored
+ GLanguage inactive
+ GFinclude inactive
+ UnitType inactive
+ GFImplicit inactive
+ GFExt inactive
+ SetType not used anymore - will be ignored
+*
+* Groups
+* <group-ident> group <group-number <help-context> <help-text>
+*
+general group 1 1 General options
+solver group 2 1 Solver related options
+deprecated group 3 1 Deprecated options
+*** End of file

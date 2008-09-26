@@ -1,0 +1,685 @@
+*
+* optcplex.def
+*
+
+usebasis boolean 0 0 0 1 GMO usebasis
+cutoff double 0 0.0 mindouble maxdouble 0 1 GMO cutoff
+tryint double 0 0.0 0 1 0 1 GMO tryint
+domlim integer 0 0 0 maxint 0 1 Domain violation number
+advind enumint 1001 1 1 1 advanced basis use
+ 0 1 Do not use advanced basis
+ 1 1 Use advanced basis if available
+ 2 1 Crash an advanced basis if available (use basis with presolve)
+aggcutlim integer 2054 3 0 2100000000 1 8 aggrigation limit for cut generation
+aggfill integer 1002 10 0 2100000000 1 1 aggregator fill parameter
+aggind integer 1003 -1 -1 2100000000 1 1 aggregator on/off
+ -1 Once for LP, unlimited for MIP
+ 0 Do not use
+baralg enumint 3007 0 1 5 algorithm selection
+ 0 1 Same as 1 for MIP subproblems, 3 otherwise
+ 1 1 Infeasibility-estimate start
+ 2 1 Infeasibility-constant start
+ 3 1 standard barrier algorithm
+barcolnz integer 3009 0 0 2100000000 1 5 dense column handling
+barcrossalg enumint 3018 0 1 5 barrier crossover method
+ -1 1 No crossover
+ 0 1 Automatic
+ 1 1 Primal crossover
+ 2 1 Dual crossover
+bardisplay enumint 3010 1 1 11 progress display level
+ 0 1 No progress information
+ 1 1 Display normal information
+ 2 1 Display diagnostic information
+barepcomp double 3002 1e-008 1e-012 1e+075 1 5 convergence tolerance
+bargrowth double 3003 1e+012 1 1e+075 1 5 unbounded face detection
+baritlim integer 3012 2100000000 0 2100000000 1 5 iteration limit
+barmaxcor integer 3013 -1 -1 2100000000 1 5 maximum correction limit
+barobjrng double 3004 1e+020 0 1e+075 1 5 maximum objective function
+barorder enumint 3014 0 1 5 row ordering algorithm selection
+ 0 1 Automatic
+ 1 1 Approximate Minimum Degree (AMD)
+ 2 1 Approximate Minimum Fill (AMF)
+ 3 1 Nested Dissection (ND)
+barqcpepcomp double 3020 1e-007 1e-012 1e+075 1 5 convergence tolerance for the barrier optimizer for QCPs
+barstartalg enumint 3017 1 1 5 barrier starting point algorithm
+ 1 1 default primal, dual is 0
+ 2 1 default primal, estimate dual
+ 3 1 primal average, dual is 0
+ 4 1 primal average, estimate dual
+bbinterval integer 2039 7 0 2100000000 1 7 best bound interval
+bndstrenind enumint 2029 -1 1 7 bound strengthening
+ -1 1 Determine automatically
+ 0 1 Don't use bound strengthening
+ 1 1 Use bound strengthening
+brdir enumint 2001 0 1 7 set branching direction
+ -1 1 Down branch selected first
+ 0 1 Algorithm decides
+ 1 1 Up branch selected first
+bttol double 2002 0.9999 0 1 1 7 backtracking limit
+cliques enumint 2003 0 1 7 clique cut generation
+ -1 1 Do not generate clique cuts
+ 0 1 Determined automatically
+ 1 1 Generate clique cuts moderately
+ 2 1 Generate clique cuts aggressively
+ 3 1 Generate clique cuts very aggressively
+coeredind enumint 2004 2 1 1 coefficient reduction on/off
+ 0 1 Do not use coefficient reduction
+ 1 1 Reduce only to integral coefficients
+ 2 1 Reduce all potential coefficients
+covers enumint 2005 0 1 7 cover cut generation
+ -1 1 Do not generate cover cuts
+ 0 1 Determined automatically
+ 1 1 Generate cover cuts moderately
+ 2 1 Generate cover cuts aggressively
+ 3 1 Generate cover cuts very aggressively
+craind enumint 1007 1 1 2 crash strategy (used to obtain starting basis)
+ -1 1 Primal: alternate ways of using objective coefficients. Dual: aggressive starting basis
+ 0 1 Primal: ignore objective coefficients during crash.     Dual: aggressive starting basis
+ 1 1 Primal: alternate ways of using objective coefficients. Dual: default starting basis
+crossoveralg enumstr 0 "default" 0 5 use parameter barcrossalg to select crossover algorithm
+ "default" 1 Automatic
+ "primal" 1 Primal Simplex
+ "dual" 1 Dual Simplex
+ "none" 1 No crossover
+cutlo double 2006 -1e+075 mindouble maxdouble 1 7 lower cutoff for tree search
+cutpass integer 2056 0 -1 2100000000 1 8 maximum number of cutting plane passes
+ -1 None
+ 0 Automatically determined
+ >0 Maximum passes to perform
+cuts enumstr 0 "0" 1 7 default cut generation
+ "-1" 1 Do not generate cuts
+ "0" 1 Determined automatically
+ "1" 1 Generate cuts moderately
+ "2" 1 Generate cuts aggressively
+ "3" 1 Generate cuts very aggressively
+ "4" 1 Generate cut highly aggressive
+ "5" 1 Generate cut extremely aggressive
+ "yes" 0 Determined automatically. This is a deprecated setting. Please use 1 to 5.
+ "no" 0 Do not generate cuts. This is a deprecated setting. Please use 0.
+cutsfactor double 2033 4 0 1e+075 1 7 cut limit
+cutup double 2007 1e+075 mindouble maxdouble 1 7 upper cutoff for tree search
+depind enumint 1008 -1 1 1 dependency checker on/off
+ -1 1 Automatic
+ 0 1 Turn off dependency checking
+ 1 1 Turn on only at the beginning of preprocessing
+ 2 1 Turn on only at the end of preprocessing
+ 3 1 Turn on at the beginning and at the end of preprocessing
+disjcuts enumint 2053 0 1 7 disjunctive cuts generation
+ -1 1 Do not generate disjunctive cuts
+ 0 1 Determined automatically
+ 1 1 Generate disjunctive cuts moderately
+ 2 1 Generate disjunctive cuts aggressively
+ 3 1 Generate disjunctive cuts very aggressively
+divetype enumint 2060 0 1 7 MIP dive strategy
+ 0 1 Automatic
+ 1 1 Traditional dive
+ 2 1 Probing dive
+ 3 1 Guided dive
+divfltup double 0 maxdouble mindouble maxdouble 1 9 upper bound on diversity
+divfltlo double 0 mindouble mindouble maxdouble 1 9 lower bound on diversity
+.divflt double 0 0 mindouble maxdouble 1 9 solution pool range filter coefficients
+dpriind enumint 1009 0 1 2 dual simplex pricing
+ 0 1 Determined automatically
+ 1 1 Standard dual pricing
+ 2 1 Steepest-edge pricing
+ 3 1 Steepest-edge pricing in slack space
+ 4 1 Steepest-edge pricing, unit initial norms
+ 5 1 Devex pricing
+dtprefix string 0 "bnd" 0 7 prefix for the GDX file for the open nodes
+dtterm boolean 0 1 0 7 terminate after last node has been dumped
+dumpcuts boolean 0 0 0 7 Dumps the cuts generated by CPLEX
+dumptree integer 0 0 0 maxint 0 7 Dumps the tree when tree has n open nodes
+eachcutlim integer 2102 2100000000 0 2100000000 1 7 Sets a limit for each type of cut
+epagap double 2008 1e-006 0 1e+020 1 10 absolute stopping tolerance
+epgap double 2009 0.0001 0 1 1 10 relative stopping tolerance
+epint double 2010 1e-005 0 0.5 1 10 integrality tolerance
+epmrk double 1013 0.01 0.0001 0.99999 1 4 Markowitz pivot tolerance
+epopt double 1014 1e-006 1e-009 0.1 1 4 optimality tolerance
+epper double 1015 1e-006 1e-008 1e+075 1 2 perturbation constant
+eprelax double 2073 1e-006 0 1e+020 0 1 Relaxation for feasOpt
+eprhs double 1016 1e-006 1e-009 0.1 1 4 feasibility tolerance
+feasopt boolean 0 0 1 1 computes a minimum-cost relaxation to make an infeasible model feasible
+ 0 Turns Feasible Relaxation off
+ 1 Turns Feasible Relaxation on
+feasoptmode enumint 1084 0 1 1 Mode of FeasOpt
+ 0 1 Minimize sum of relaxations
+ 1 1 Minimize sum of relaxations and optimize
+ 2 1 Minimize number of relaxations
+ 3 1 Minimize number of relaxations and optimize
+ 4 1 Minimize sum of squares of relaxations
+ 5 1 Minimize sum of squares of relaxations and optimize
+.feaspref double 0 1 0 1e+020 1 1 feasibility preference
+fixoptfile string 0 "" 0 1 name of option file which is read just before solving the fixed problem
+flowcovers enumint 2040 0 1 7 flow cover cut generation
+ -1 1 Do not generate flow cover cuts
+ 0 1 Determined automatically
+ 1 1 Generate flow cover cuts moderately
+ 2 1 Generate flow cover cuts aggressively
+flowpaths enumint 2051 0 1 7 flow path cut generation
+ -1 1 Do not generate flow path cuts
+ 0 1 Determined automatically
+ 1 1 Generate flow path cuts moderately
+ 2 1 Generate flow path cuts aggressively
+flushfiles boolean 0 0 0 11 flush status and MIP trace files *** hidden
+fpheur enumint 2098 0 1 7 feasibility pump heuristic
+ -1 1 Turns Feasible Pump heuristic off
+ 0 1 Automatic
+ 1 1 Apply the feasibility pump heuristic with an emphasis on finding a feasible solution
+ 2 1 Apply the feasibility pump heuristic with an emphasis on finding a feasible solution with a good objective value
+fraccand integer 2048 200 1 2100000000 1 8 candidate limit for generating Gomory fractional cuts
+fraccuts enumint 2049 0 1 7 Gomory fractional cut generation
+ -1 1 Do not generate Gomory fractional cuts
+ 0 1 Determined automatically
+ 1 1 Generate Gomory fractional cuts moderately
+ 2 1 Generate Gomory fractional cuts aggressively
+fracpass integer 2050 0 0 2100000000 1 8 maximum number of passes for generating Gomory fractional cuts
+ 0 0 Automatically determined
+ >0 Maximum passes to perform
+gubcovers enumint 2044 0 1 7 GUB cover cut generation
+ -1 1 Do not generate GUB cover cuts
+ 0 1 Determined automatically
+ 1 1 Generate GUB cover cuts moderately
+ 2 1 Generate GUB cover cuts aggressively
+heurfreq integer 2031 0 -1 2100000000 1 7 heuristic frequency
+ -1 Do not use the node heuristic
+ 0 Determined automatically
+iafile string 0 "" 0 1 options for interactive option setting come from a file
+iatriggerfile string 0 "" 0 1 file that triggers the reading of a secondary option file
+iatriggertime double 0 60 1 maxdouble 0 1 time interval in seconds the link looks for the trigger file
+iis boolean 0 0 1 2 run the IIS finder if the problem is infeasible
+implbd enumint 2041 0 1 7 implied bound cut generation
+ -1 1 Do not generate implied bound cuts
+ 0 1 Determined automatically
+ 1 1 Generate implied bound cuts moderately
+ 2 1 Generate implied bound cuts aggressively
+interactive boolean 0 0 1 1 allow interactive option setting after a Control-C
+intsollim integer 2015 2100000000 1 2100000000 1 8 maximum number of integer solutions
+itlim integer 1020 2100000000 0 2100000000 1 3 iteration limit
+lbheur boolean 2063 0 1 7 local branching heuristic
+ 0 Off
+ 1 Apply local branching heuristic to new incumbent
+lpalg enumstr 0 "default" 0 1 use parameter lpmethod to specify algorithm used for LP problems
+ "barrier" 1 Barrier
+ "default" 1 Automatic
+ "primal" 1 Primal Simplex
+ "dual" 1 Dual Simplex
+ "network" 1 Network Simplex
+lpmethod enumint 1062 0 1 1 algorithm to be used for LP problems
+ 0 1 Automatic
+ 1 1 Primal Simplex
+ 2 1 Dual Simplex
+ 3 1 Network Simplex
+ 4 1 Barrier
+ 5 1 Sifting
+ 6 1 Concurrent
+ltol double 0 0 0 maxdouble 0 4 basis identification primal tolerance *** hidden
+memoryemphasis boolean 1082 0 1 1 Reduces use of memory
+ 0 Do not conserve memory
+ 1 Conserve memory where possible
+mipdisplay enumint 2012 4 1 11 progress display level
+ 0 1 No display
+ 1 1 Display integer feasible solutions
+ 2 1 Displays nodes under mipinterval control
+ 3 1 Same as 2 but adds information on cuts
+ 4 1 Same as 3 but adds LP display for the root node
+ 5 1 Same as 3 but adds LP display for all nodes
+mipemphasis enumint 2058 0 1 7 MIP solution tactics
+ 0 1 Balance optimality and feasibility
+ 1 1 Emphasize feasibility over optimality
+ 2 1 Emphasize optimality over feasibility
+ 3 1 Emphasize moving the best bound
+ 4 1 Emphasize hidden feasible solutions
+mipinterval integer 2013 100 1 2100000000 1 11 progress display interval
+mipordind boolean 2020 1 1 7 priority list on/off
+ 0 Do not use priorities for branching
+ 1 Priority orders are utilized
+mipordtype enumint 2032 0 1 7 priority order generation
+ 0 1 None
+ 1 1 decreasing cost magnitude
+ 2 1 increasing bound range
+ 3 1 increasing cost per coefficient count
+mipsearch enumint 2109 0 1 7 search strategy for mixed integer programs
+ 0 1 Automatic
+ 1 1 Apply traditional branch and cut strategy
+ 2 1 Apply dynamic search
+mipstart boolean 0 0 1 7 use mip starting values
+ 0 do not use the values
+ 1 use the values
+miptrace string 0 "" 0 11 filename of MIP trace file *** hidden
+miptracenode integer 0 100 0 maxint 0 11 node interval when a trace record is written *** hidden
+miptracetime double 0 1 0 maxdouble 0 11 time interval when a trace record is written *** hidden
+miqcpstrat enumint 2110 0 1 7 MIQCP relaxation choice
+ 0 1 Automatic
+ 1 1 QCP relaxation
+ 2 1 LP relaxation
+mircuts enumint 2052 0 1 7 mixed integer rounding cut generation
+ -1 1 Do not generate MIR cuts
+ 0 1 Determined automatically
+ 1 1 Generate MIR cuts moderately
+ 2 1 Generate MIR cuts aggressively
+mpslongnum boolean 1081 1 1 11 MPS and REW file format precision of numeric output
+ 0 Use limited MPS precision
+ 1 Use full-precision
+mtol double 0 0 0 maxdouble 0 4 basis identification dual tolerance *** hidden
+names boolean 0 1 1 1 load GAMS names into Cplex
+netdisplay enumint 5005 2 1 11 network display level
+ 0 1 No network log.
+ 1 1 Displays true objective values
+ 2 1 Displays penalized objective values
+netepopt double 5002 1e-006 1e-011 0.1 1 4 optimality tolerance for the network simplex method
+neteprhs double 5003 1e-006 1e-011 0.1 1 4 feasibility tolerance for the network simplex method
+netfind enumint 1022 2 1 2 attempt network extraction
+ 1 1 Extract pure network only
+ 2 1 Try reflection scaling
+ 3 1 Try general scaling
+netitlim integer 5001 2100000000 0 2100000000 1 3 iteration limit for network simplex
+netppriind enumint 5004 0 1 2 network simplex pricing
+ 0 1 Automatic
+ 1 1 Partial pricing
+ 2 1 Multiple partial pricing
+ 3 1 Multiple partial pricing with sorting
+nobounds immediate nobounds 0 1 ignores bounds on options
+nodefileind enumint 2016 1 1 7 node storage file indicator
+ 0 1 No node files
+ 1 1 Node files in memory and compressed
+ 2 1 Node files on disk
+ 3 1 Node files on disk and compressed
+nodelim integer 2017 2100000000 0 2100000000 1 8 maximum number of nodes to solve
+nodesel enumint 2018 1 1 7 node selection strategy
+ 0 1 Depth-first search
+ 1 1 Best-bound search
+ 2 1 Best-estimate search
+ 3 1 Alternate best-estimate search
+numericalemphasis boolean 1083 0 1 1 emphasizes precision in numerically unstable or difficult problems
+ 0 Off
+ 1 Exercise extreme caution in computation
+objdif double 2019 0 mindouble maxdouble 1 10 overrides GAMS Cheat parameter
+objllim double 1025 -1e+075 mindouble maxdouble 1 3 objective function lower limit
+objrng strlist 0 1 1 do objective ranging
+objulim double 1026 1e+075 mindouble maxdouble 1 3 objective function upper limit
+parallelmode enumint 1109 0 1 1 parallel optimization mode
+ -1 1 Enable opportunistic parallel search mode
+ 0 1 Automatic
+ 1 1 Enable deterministic parallel search mode
+perind boolean 1027 0 1 2 force initial perturbation
+ 0 not automatically perturbed
+ 1 automatically perturbed
+perlim integer 1028 0 0 2100000000 1 2 number of stalled iterations before perturbation
+polishtime double 2066 0 0 1e+075 1 8 time spent polishing a solution
+populatelim integer 2108 20 1 2100000000 1 9 limit of solutions generated for the solution pool by populate method
+ppriind enumint 1029 0 1 2 primal simplex pricing
+ -1 1 Reduced-cost pricing
+ 0 1 Hybrid reduced-cost and Devex pricing
+ 1 1 Devex pricing
+ 2 1 Steepest edge pricing
+ 3 1 Steepest edge pricing with slack initial norms
+ 4 1 Full pricing
+predual enumint 1044 0 1 1 give dual problem to the optimizer
+ -1 1 do not give dual to optimizer
+ 0 1 automatic
+ 1 1 give dual to optimizer
+preind boolean 1030 1 1 1 turn presolver on/off
+prelinear boolean 1058 1 1 1 linear reduction indicator
+prepass integer 1052 -1 -1 2100000000 1 1 number of presolve applications to perform
+ -1 Determined automatically
+ 0 No presolve
+preslvnd enumint 2037 0 1 7 node presolve selector
+ -1 1 No node presolve
+ 0 1 Automatic
+ 1 1 Force node presolve
+ 2 1 Perform probing on integer-infeasible variables
+pricelim integer 1010 0 0 2100000000 1 2 pricing candidate list
+printoptions boolean 0 0 1 1 list values of all options to GAMS listing file
+probe enumint 2042 0 1 7 perform probing before solving a MIP
+ -1 1 No probing
+ 0 1 Automatic
+ 1 1 Limited probing
+ 2 1 More probing
+ 3 1 Full probing
+probetime double 2065 1e+075 0 1e+075 1 8 time spent probing
+qpmakepsdind boolean 4010 1 1 7 adjust MIQP formulation to make the quadratic matrix positive-semi-definite
+ 0 Off
+ 1 On
+qpmethod enumint 1063 0 1 1 algorithm to be used for QP problems
+ 0 1 Automatic
+ 1 1 Primal Simplex
+ 2 1 Dual Simplex
+ 3 1 Network Simplex
+ 4 1 Barrier
+ 5 1 Sifting
+ 6 1 Concurrent dual, barrier, and primal
+quality boolean 0 0 1 11 write solution quality statistics
+readfile immediate readfile 0 1 read secondary option file
+readflt string 0 "" 1 9 reads Cplex solution pool filter file
+reduce enumint 1057 3 1 1 primal and dual reduction type
+ 0 1 No primal or dual reductions
+ 1 1 Only primal reductions
+ 2 1 Only dual reductions
+ 3 1 Both primal and dual reductions
+reinv integer 1031 0 0 10000 1 2 refactorization frequency
+relaxfixedinfeas boolean 0 0 1 7 access small infeasibilties in the solve of the fixed problem
+ 0 Off
+ 1 On
+relaxpreind enumint 2034 -1 1 1 presolve for initial relaxation on/off
+ -1 1 Automatic
+ 0 1 do not presolve initial relaxation
+ 1 1 use presolve on initial relaxation
+relobjdif double 2022 0 0 1 1 10 relative cheat parameter
+repairtries integer 2067 0 -1 2100000000 1 8 try to repair infeasible MIP start
+ -1 None: do not try to repair
+ 0 Automatic
+ >0 Maximum tries to perform
+repeatpresolve enumint 2064 -1 1 7 reapply presolve at root after preprocessing
+ -1 1 Automatic
+ 0 1 Turn off represolve
+ 1 1 Represolve without cuts
+ 2 1 Represolve with cuts
+ 3 1 Represolve with cuts and allow new root cuts
+rerun enumstr 0 "yes" 1 1 rerun problem if presolve infeasible or unbounded
+ "auto" 1 Automatic
+ "yes" 1 Rerun infeasible models with presolve turned off
+ "no" 1 Do not rerun infeasible models
+rhsrng strlist 0 1 1 do right-hand-side ranging
+rinsheur integer 2061 0 -1 2100000000 1 7 relaxation induced neighborhood search frequency
+ -1 Disable RINS
+ 0 Automatic
+rngrestart string 0 "" 1 1 write GAMS readable ranging information file
+scaind enumint 1034 0 1 1 matrix scaling on/off
+ -1 1 No scaling
+ 0 1 Standard scaling
+ 1 1 Modified, more aggressive scaling method
+secret strlist 0 0 1 pass on secret CPLEX options
+siftalg enumint 1077 0 1 6 sifting subproblem algorithm
+ 0 1 Automatic
+ 1 1 Primal simplex
+ 2 1 Dual simplex
+ 3 1 Network simplex
+ 4 1 Barrier
+siftdisplay enumint 1076 1 1 11 sifting display level
+ 0 1 No display
+ 1 1 Display major iterations
+ 2 1 Display LP subproblem information
+siftitlim integer 1078 2100000000 0 2100000000 1 6 limit on sifting iterations
+simdisplay enumint 1019 1 1 11 simplex display level
+ 0 1 No iteration messages are issued until the optimal solution is reported
+ 1 1 An iteration log message will be issued after each refactorization
+ 2 1 An iteration log message will be issued after each iteration
+singlim integer 1037 10 0 2100000000 1 3 limit on singularity repairs
+solnpool string 0 "" 1 9 solution pool file name
+solnpoolagap double 2106 1e+075 0 1e+075 1 9 absolute tolerance for the solutions in the solution pool
+solnpoolcapacity integer 2103 2100000000 0 2100000000 1 9 limits of solutions kept in the solution pool
+solnpoolgap double 2105 1e+075 0 1e+075 1 9 relative tolerance for the solutions in the solution pool
+solnpoolintensity enumint 2107 0 1 9 solution pool intensity for ability to produce multiple solutions
+ 0 1 Automatic
+ 1 1 Mild: generate few solutions quickly
+ 2 1 Moderate: generate a larger number of solutions
+ 3 1 Aggressive: generate many solutions and expect performance penalty
+ 4 1 Very aggressive: enumerate all practical solutions
+solnpoolpop enumint 0 1 1 9 methods to populate the solution pool
+ 1 1 Just collect the incumbents found during regular optimization
+ 2 1 Calls the populate procedure
+solnpoolpopdel string 0 "" 1 9 file with solution numbers to delete from the solution pool
+solnpoolpoprepeat string 0 "" 1 9 method to decide if populating the solution should be repeated
+solnpoolprefix string 0 "soln" 1 9 file name prefix for GDX solution files
+solnpoolreplace enumint 2104 0 1 9 strategy for replacing a solution in the solution pool
+ 0 1 Replace the first solution (oldest) by the most recent solution; first in, first out
+ 1 1 Replace the solution which has the worst objective
+ 2 1 Replace solutions in order to build a set of diverse solutions
+solvefinal boolean 0 1 1 7 switch to solve the problem with fixed discrete variables
+ 0 Do not solve the fixed problem
+ 1 Solve the fixed problem and return duals
+startalg enumint 2025 0 1 7 MIP starting algorithm
+ 0 1 Automatic
+ 1 1 Primal simplex
+ 2 1 Dual simplex
+ 3 1 Network simplex
+ 4 1 Barrier
+ 5 1 Sifting
+ 6 1 Concurrent
+strongcandlim integer 2045 10 1 2100000000 1 7 size of the candidates list for strong branching
+strongitlim integer 2046 0 0 2100000000 1 7 limit on iterations per branch for strong branching
+subalg enumint 2026 0 1 7 algorithm for subproblems
+ 0 1 Automatic
+ 1 1 Primal simplex
+ 2 1 Dual simplex
+ 3 1 Network optimizer followed by dual simplex
+ 4 1 Barrier with crossover
+ 5 1 Sifting
+submipnodelim integer 2062 500 1 2100000000 1 7 limit on number of nodes in an RINS subMIP
+symmetry enumint 2059 -1 1 7 symmetry breaking cuts
+ -1 1 Automatic
+ 0 1 Turn off symmetry breaking
+ 1 1 Moderate level of symmetry breaking
+ 2 1 Aggressive level of symmetry breaking
+ 3 1 Very aggressive level of symmetry breaking
+ 4 1 Highly aggressive level of symmetry breaking
+ 5 1 Extremely aggressive level of symmetry breaking
+threads integer 1067 1 0 128 1 1 global default thread count
+tilim double 1039 1e+075 0 1e+075 1 1 overrides the GAMS ResLim option
+trelim double 2027 1e+075 0 1e+075 1 8 maximum space in memory for tree
+tuning string 0 "" 1 1 invokes parameter tuning tool
+tuningdisplay enumint 1113 1 1 1 level of information reported by the tuning tool
+ 0 1 Turn off display
+ 1 1 Display standard minimal reporting
+ 2 1 Display standard report plus parameter settings being tried
+ 3 1 Display exhaustive report and log
+tuningmeasure enumint 1110 1 1 1 measure for evaluating progress for a suite of models
+ 1 1 mean average
+ 2 1 minmax
+tuningrepeat integer 1111 1 1 2100000000 1 1 number of times tuning is to be repeated on perturbed versions
+tuningtilim double 1112 10000 1 1e+075 1 1 tuning time limit per model or suite
+usercutcall string 0 "" 0 12 The GAMS command line to call the cut generator
+usercutfirst integer 0 10 0 maxint 0 12 Calls the cut generator for the first n nodes
+usercutfreq integer 0 10 0 maxint 0 12 Determines the frequency of the cut generator model calls
+usercutinterval integer 0 100 0 maxint 0 12 Determines the interval when to apply the multiplier for the frequency of the cut generator model calls
+usercutmult integer 0 2 0 maxint 0 12 Determines the multiplier for the frequency of the cut generator model calls
+usercutnewint boolean 0 1 0 12 Calls the cut generator if the solver found a new integer feasible solution
+usergdxin string 0 "bchin.gdx" 0 12 The name of the GDX file read back into Cplex
+usergdxname string 0 "bchout.gdx" 0 12 The name of the GDX file exported from the solver with the solution at the node
+usergdxnameinc string 0 "bchout_i.gdx" 0 12 The name of the GDX file exported from the solver with the incumbent solution
+usergdxprefix string 0 "" 0 12 Prefixes usergdxin, usergdxname, and usergdxnameinc
+userheurcall string 0 "" 0 12 The GAMS command line to call the heuristic
+userheurfirst integer 0 10 0 maxint 0 12 Calls the heuristic for the first n nodes
+userheurfreq integer 0 10 0 maxint 0 12 Determines the frequency of the heuristic model calls
+userheurinterval integer 0 100 0 maxint 0 12 Determines the interval when to apply the multiplier for the frequency of the heuristic model calls
+userheurmult integer 0 2 0 maxint 0 12 Determines the multiplier for the frequency of the heuristic model calls
+userheurnewint boolean 0 1 0 12 Calls the heuristic if the solver found a new integer feasible solution
+userheurobjfirst integer 0 0 0 maxint 0 12 ***
+userincbcall string 0 "" 1 12 The GAMS command line to call the incumbent checking program
+userincbicall string 0 "" 0 12 The GAMS command line to call the incumbent reporting program
+userjobid string 0 "" 0 12 Postfixes lf, o on call adds --userjobid to the call. Postfixes gdxname, gdxnameinc and gdxin
+userkeep boolean 0 0 0 12 Calls gamskeep instead of gams
+varsel enumint 2028 0 1 7 variable selection strategy at each node
+ -1 1 Branch on variable with minimum infeasibility
+ 0 1 Branch variable automatically selected
+ 1 1 Branch on variable with maximum infeasibility
+ 2 1 Branch based on pseudo costs
+ 3 1 Strong Branching
+ 4 1 Branch based on pseudo reduced costs
+waitforenter boolean 0 0 0 1 the user needs to hit enter before we terminate
+workdir string 1064 "." 1 1 directory for working files
+workmem double 1065 128 0 1e+075 1 1 memory available for working storage
+writebas string 0 "" 1 11 produce a Cplex basis file
+writeflt string 0 "" 1 11 produce a Cplex solution pool filter file
+writelp string 0 "" 1 11 produce a Cplex LP file
+writemps string 0 "" 1 11 produce a Cplex MPS file
+writeord string 0 "" 1 11 produce a Cplex ord file
+writepre string 0 "" 1 11 produce a Cplex LP/MPS/SAV file of the presolved problem
+writesav string 0 "" 1 11 produce a Cplex binary problem file
+zerohalfcuts enumint 2111 0 1 7 zero-half cuts
+ -1 1 Off
+ 0 1 Automatic
+ 1 1 Generate zero-half cuts moderately
+ 2 1 Generate zero-half cuts aggressively
+*
+* synonym section
+*
+advbasis synonym advind
+setadvind synonym advind
+aggregate synonym aggind
+setaggind synonym aggind
+branch synonym brdir
+backtracking synonym bttol
+crash synonym craind
+setcraind synonym craind
+setcutlo synonym cutlo
+setcutup synonym cutup
+dgradient synonym dpriind
+mipgap synonym epgap
+setepgap synonym epgap
+integraltol synonym epint
+markowitz synonym epmrk
+setepmrk synonym epmrk
+opttol synonym epopt
+setepopt synonym epopt
+perturbpar synonym epper
+setepper synonym epper
+feasibtol synonym eprhs
+seteprhs synonym eprhs
+intsolutionlim synonym intsollim
+setmslim synonym intsollim
+iterationlim synonym itlim
+setitlim synonym itlim
+setmifo synonym mipdisplay
+mipdisplayint synonym mipinterval
+setmint synonym mipinterval
+priorities synonym mipordind
+setordind synonym mipordind
+ndfilind synonym nodefileind
+ndlim synonym nodelim
+setndlim synonym nodelim
+ndsel synonym nodesel
+nodeselect synonym nodesel
+objectivedif synonym objdif
+setobjdif synonym objdif
+objectivelo synonym objllim
+setobjllim synonym objllim
+objectivehi synonym objulim
+setobjulim synonym objulim
+doperturb synonym perind
+setperind synonym perind
+pgradient synonym ppriind
+pricing synonym ppriind
+setpriind synonym ppriind
+setppriind synonym ppriind
+presolve synonym preind
+pricelist synonym pricelim
+setedlimu synonym pricelim
+refactor synonym reinv
+setreinv synonym reinv
+scale synonym scaind
+setscaind synonym scaind
+lpdisplaylev synonym simdisplay
+setitfoind synonym simdisplay
+setsinglim synonym singlim
+singularity synonym singlim
+subprobalg synonym subalg
+settilim synonym tilim
+timelimit synonym tilim
+treememory synonym trelim
+setvarsel synonym varsel
+variableselect synonym varsel
+writepremps synonym writepre
+optca synonym epagap
+optcr synonym epgap
+iterlim synonym itlim
+prioropt synonym mipordind
+nodlim synonym nodelim
+cheat synonym objdif
+reslim synonym tilim
+*
+* indicator section
+*
+indic  indicator
+myeolchar EOLCOMM !
+*
+* deprecated section
+*
+cplex10 deprecated
+ crossoveralg Use option lpmethod to specify barrier crossover method
+ lpalg Use option lpmethod to specify algorithm used for LP problems
+cplex11 deprecated
+ writepremps Use option writepre to specify file name. File extension determines problem format
+synon deprecated
+ advbasis
+ setadvind
+ aggregate
+ setaggind
+ branch
+ backtracking
+ crash
+ setcraind
+ setcutlo
+ setcutup
+ dgradient
+ mipgap
+ setepgap
+ integraltol
+ markowitz
+ setepmrk
+ opttol
+ setepopt
+ perturbpar
+ setepper
+ feasibtol
+ seteprhs
+ intsolutionlim
+ setmslim
+ iterationlim
+ setitlim
+ setmifo
+ mipdisplayint
+ setmint
+ priorities
+ setordind
+ ndfilind
+ ndlim
+ setndlim
+ ndsel
+ nodeselect
+ objectivedif
+ setobjdif
+ objectivelo
+ setobjllim
+ objectivehi
+ setobjulim
+ doperturb
+ setperind
+ pgradient
+ pricing
+ setpriind
+ setppriind
+ presolve
+ pricelist
+ setedlimu
+ refactor
+ setreinv
+ scale
+ setscaind
+ lpdisplaylev
+ setitfoind
+ setsinglim
+ singularity
+ subprobalg
+ settilim
+ timelimit
+ treememory
+ setvarsel
+ variableselect
+*
+* Groups
+* <group-ident> group <group-number <help-context> <help-text>
+*
+general group 1 1 Preprocessing and General Options
+simplexalg group 2 1 Simplex Algorithmic Options
+simplexlim group 3 1 Simplex Limit Options
+simplextol group 4 1 Simplex Tolerance Options
+barrier group 5 1 Barrier Specific Options
+sifting group 6 1 Sifting Specific Options
+mipalg group 7 1 MIP Algorithmic Options
+miplim group 8 1 MIP Limit Options
+solpool group 9 1 MIP Solution Pool Options
+miptol group 10 1 MIP Tolerance Options
+output group 11 1 Output Options
+bch group 12 1 BCH Facility Options
+*** End of file
