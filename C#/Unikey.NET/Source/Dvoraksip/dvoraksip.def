@@ -1,0 +1,9 @@
+; dvoraksip.def : Declares the module parameters.
+
+LIBRARY      "dvoraksip.DLL"
+
+EXPORTS
+	DllCanUnloadNow      PRIVATE
+	DllGetClassObject    PRIVATE
+	DllRegisterServer    PRIVATE
+	DllUnregisterServer	 PRIVATE
