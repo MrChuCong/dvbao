@@ -1,0 +1,78 @@
+<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="MasterPage" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head runat="server">
+    <link rel="stylesheet" type="text/css" href="StyleSheet.css" /> 
+    <title>Earnest Bank</title>
+</head>
+<body>
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+<tr><td class="blank_top"></td></tr>
+<tr><td class="blank_top2"></td></tr>
+<tr>
+    <td class="header"><img src="images/banner.JPG" alt="" /></td>
+</tr>
+<tr><td class="blank_top2"></td></tr>
+<tr><td class="blank_top"></td></tr>
+<tr>
+    <td class="menu">
+        <table border="0" cellpadding="0" cellspacing="0">
+        <tr>
+            <td><img src="images/separator.gif" alt="" /></td>
+            <td><a href="Default.aspx" class="menu_item">Home</a></td>
+            <td><img src="images/separator.gif" alt="" /></td>
+            <td><a href="Products.aspx" class="menu_item">Products</a></td>            
+            <td><img src="images/separator.gif" alt="" /></td>
+            <td><a href="Account.aspx" class="menu_item">Account</a></td>
+            <td><img src="images/separator.gif" alt="" /></td>
+            <td><a href="Login.aspx" class="menu_item">Login</a></td>
+            <td><img src="images/separator.gif" alt="" /></td>
+            <td><a href="Register.aspx" class="menu_item">Register</a></td>
+            <td><img src="images/separator.gif" alt="" /></td>
+            <td><a href="About.aspx" class="menu_item">About</a></td>
+            <td><img src="images/separator.gif" alt="" /></td>
+        </tr>
+        </table>
+    </td>
+</tr>
+<tr>
+    <td>
+        <div class="main">
+            <table border="0" cellpadding="0" cellspacing="0">
+            <tr>
+                <td class="wrapper">
+                    <div class="background">
+                        <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                        <tr>
+                            <td class="welcome" align="right">
+                                <asp:Label ID="lblWelcome" runat="server" Visible="False"></asp:Label>
+                            </td>
+                        </tr>
+                        </table>
+                        <asp:ContentPlaceHolder ID="main" runat="server"></asp:ContentPlaceHolder>
+                    </div>
+                </td>
+            </tr>
+            </table>
+        </div>
+    </td>
+</tr>
+<tr>
+    <td align="left">
+        <div class="footer">
+            <table border="0" cellpadding="0" cellspacing="0">
+            <tr>
+                <td class="wrapper2">
+                    <div class="background2"></div>
+                    <div class="copyright">Powered by Earnest Bank! - Copyright © 2005-2008 - All Rights Reserved</div>
+                </td>
+            </tr>
+            </table>            
+        </div>
+    </td>
+</tr>
+</table>
+</body>
+</html>
