@@ -1,0 +1,16 @@
+<%@ Master Language="C#" AutoEventWireup="true" CodeFile="cPanel.master.cs" Inherits="cPanel_cPanel" MasterPageFile="~/MasterPage.master" %>
+
+<asp:Content ContentPlaceHolderID="body" runat="server">
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+<tr>
+    <td style="width:120px; vertical-align:top">
+    <table border="0" cellpadding="2" cellspacing="2" width="100%">
+    <tr><td><a href="Categories.aspx">Categories</a></td></tr>
+    <tr><td><a href="Books.aspx">Books</a></td></tr>
+    <tr><td><a href="Users.aspx">Users</a></td></tr>
+    </table>
+    </td>
+    <td style="vertical-align:top"><asp:ContentPlaceHolder ID="main" runat="server"></asp:ContentPlaceHolder></td>
+</tr>
+</table>
+</asp:Content>

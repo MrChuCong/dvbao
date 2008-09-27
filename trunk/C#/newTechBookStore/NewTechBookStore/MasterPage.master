@@ -1,0 +1,98 @@
+<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="MasterPage" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head runat="server">
+    <link rel="stylesheet" type="text/css" href="StyleSheet.css" />
+    <title>New Tech Book Online Shopping</title>
+    <script language="javascript" type="text/javascript">
+    var PayPalWindow = null;
+    
+    function OpenPayPalWindow(url)
+    {
+        if (!PayPalWindow || PayPalWindow.closed)
+        {
+            PayPalWindow = window.open(url, "cart");
+        }
+        else
+        {
+            PayPalWindow.location.href = url;
+            PayPalWindow.focus();
+        }
+    }
+    </script>
+</head>
+<body>
+<form id="FORM" runat="server">
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+<tr>
+    <td style="width:50%"></td>
+    <td style="background-color:#ffffff;" class="wrapper">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <tr>
+        <td>
+        <table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tr><td style="background-color:White; width:100%; height:5px"></td></tr>
+        <tr><td style="background-color:Black; width:100%; height:5px"></td></tr>
+        <tr>
+            <td style="height:100px">
+            <table border="0" cellpadding="0" cellspacing="0" width="100%">
+            <tr>
+                <td><div class="logo"></div></td>
+                <td style="width:100%; background-color:White; text-align:right; padding-right:20px">
+                Currency:
+                <asp:DropDownList ID="lstCurrency" runat="server" AutoPostBack="True" DataSourceID="CurrencySqlDataSource" DataTextField="Code" DataValueField="Code" OnDataBound="lstCurrency_DataBound">
+                </asp:DropDownList><asp:SqlDataSource ID="CurrencySqlDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:NewTechBookStoreConnectionString %>"
+                    SelectCommand="SELECT [Code] FROM [Currency]"></asp:SqlDataSource>
+                </td>
+            </tr>
+            </table>            
+            </td>
+        </tr>
+        <tr><td style="background-color:Black; width:100%; height:5px"></td></tr>
+        <tr><td style="background-color:White; width:100%; height:5px"></td></tr>
+        </table>
+        </td>
+    </tr>
+    <tr>
+        <td class="menu">
+            <table border="0" cellpadding="0" cellspacing="0">
+            <tr>
+                <td><img src="/NewTechBookStore/images/separator.gif" alt="" /></td>
+                <td><a href="/NewTechBookStore/Default.aspx" class="menu_item">Home</a></td>
+                <td><img src="/NewTechBookStore/images/separator.gif" alt="" /></td>
+                <td><a href="/NewTechBookStore/Search.aspx" class="menu_item">Search</a></td>
+                <td><img src="/NewTechBookStore/images/separator.gif" alt="" /></td>
+                <td><a href="/NewTechBookStore/Login.aspx" class="menu_item">Login</a></td>
+                <td><img src="/NewTechBookStore/images/separator.gif" alt="" /></td>
+                <td><a href="/NewTechBookStore/Register.aspx" class="menu_item">Register</a></td>
+                <td><img src="/NewTechBookStore/images/separator.gif" alt="" /></td>
+                <td><a href="/NewTechBookStore/Default.aspx" class="menu_item">About</a></td>
+                <td><img src="/NewTechBookStore/images/separator.gif" alt="" /></td>
+            </tr>
+            </table>
+        </td>
+    </tr>
+    <tr><td style="height:40px; background-color:White; padding-right:5px; padding-top:5px;" align="right"><asp:Label ID="lblWelcome" runat="server" Visible="false"></asp:Label></td></tr>
+    <tr>
+        <td style="height:400px; vertical-align:top; text-align:left; padding:10px; background:White;"><asp:ContentPlaceHolder ID="body" runat="server"></asp:ContentPlaceHolder></td>
+    </tr>
+    <tr>
+        <td>
+        <table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tr><td style="background-color:Black; width:100%; height:5px"></td></tr>
+        <tr>
+            <td style="height:60px; text-align:center; background-color:White; color:Maroon; font-weight:bold">Copyright © 2004 - 2008 New Tech Book Online Shopping</td>
+        </tr>
+        </table>
+        </td>
+    </tr>
+    </table>
+    </td>
+    <td style="width:50%"></td>
+</tr>
+</table>
+</form>
+</body>
+</html>

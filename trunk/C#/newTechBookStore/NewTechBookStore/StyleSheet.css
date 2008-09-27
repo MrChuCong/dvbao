@@ -1,0 +1,86 @@
+﻿body
+{
+	padding:0px;
+	margin:0px;
+	background:#282826 url(images/mainbg.jpg) repeat;
+	font-family:Verdana;
+	font-size:16px;
+	color:#002e1c;
+}
+
+.page_title
+{
+	font-family:Comic Sans MS;
+	font-size:24px;
+}
+
+.logo
+{
+	background:url(images/logo.jpg);
+	width:458px;
+	height:209px;
+}
+
+.addtocart
+{
+	background:url(images/addtocart.gif);
+	width:160px;
+	height:27px;
+}
+
+.viewcart
+{
+	background:url(images/viewcart.gif);
+	width:130px;
+	height:32px;
+}
+
+.menu
+{
+	background:url(images/menubg.gif) repeat-x;
+	height:52px;
+	text-align:center;
+}
+
+.menu_item
+{
+	color:#cbdbb7;
+	font-size:20px;
+	text-decoration:none;
+	text-transform:none;
+	margin:0px 0px 0px 0px;
+	padding:18px 50px 18px 50px;
+}
+
+.menu_item:hover
+{
+	color:#ffffff;
+	text-decoration:none;
+}
+
+.field
+{
+	color:#012c4a;
+	font-weight:bold;
+}
+
+.wrapper
+{
+	background:url(images/wrapper.gif);
+	padding:10px;
+	width:780px;
+	height:300px;
+	text-align:center;
+}
+
+a, a:active, a:visited
+{
+	color:#2e0443;
+	text-decoration:none;
+}
+
+a:hover
+{
+	color:#2e0443;
+	text-decoration:underline;
+}
