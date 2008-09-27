@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "D:\...\EarnestBank\", ".", "{A1073D44-5D4F-4DD2-B69D-2F1B13062FB7}"
+	ProjectSection(WebsiteProperties) = preProject
+		Debug.AspNetCompiler.VirtualPath = "/EarnestBank"
+		Debug.AspNetCompiler.PhysicalPath = "..\EarnestBank\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\EarnestBank\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/EarnestBank"
+		Release.AspNetCompiler.PhysicalPath = "..\EarnestBank\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\EarnestBank\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "2478"
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|.NET = Debug|.NET
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A1073D44-5D4F-4DD2-B69D-2F1B13062FB7}.Debug|.NET.ActiveCfg = Debug|.NET
+		{A1073D44-5D4F-4DD2-B69D-2F1B13062FB7}.Debug|.NET.Build.0 = Debug|.NET
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
