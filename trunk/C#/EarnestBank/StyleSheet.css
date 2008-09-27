@@ -1,0 +1,176 @@
+﻿body
+{
+	padding:0px;
+	margin:0px;
+}
+
+.blank_top
+{
+	background-color:#4c6f3e;
+	height:15px;
+}
+
+.blank_top2
+{
+	background-color:#000000;
+	height:15px;
+}
+
+.header
+{
+	background-color:#000000;
+	text-align:center;
+}
+
+.menu
+{
+	background:url(images/menubg.gif) repeat-x;
+	height:52px;
+	text-align:center;
+}
+
+.menu_item
+{
+	color:#cbdbb7;
+	font-size:20px;
+	text-decoration:none;
+	text-transform:none;
+	margin:0px 0px 0px 0px;
+	padding:18px 36px 18px 36px;
+}
+
+.menu_item:hover
+{
+	color:#ffffff;
+}
+
+.wrapper
+{
+	background:url(images/wrapper.gif);
+	padding:10px 10px 0px 10px;
+	width:780px;
+	height:300px;
+	text-align:center;
+}
+
+.wrapper2
+{
+	padding:0px 10px 10px 10px;
+	width:780px;	
+	text-align:center;
+}
+
+.background
+{
+	background:#d9f6c1;
+	padding:28px 50px 6px 50px;
+	text-align:left;
+	height:100%;
+	font-family:Verdana;
+	font-size:16px;
+	color:#002e1c;
+}
+
+.background2
+{
+	background:#d9f6c1;
+	height:100%;
+}
+
+.main
+{
+	background:url(images/mainbg.jpg);
+	text-align:center;
+	height:300px;
+}
+
+.footer
+{
+	height:89px;
+	padding:0px 0px 0px 0px;
+	background:url(images/footerbg.gif) repeat-x 0 0;
+	text-align:center;
+}
+
+.copyright
+{
+	padding-top:10px;
+	font-family:Verdana;
+	color:#ffffff;
+}
+
+.page_title
+{
+	font-family:Comic Sans MS;
+	font-size:40px;
+	font-weight:bold;
+	padding-bottom:30px;
+	color:#3d3e27;
+}
+
+.products_category
+{
+	text-align:center;
+	font-family:Comic Sans MS;
+	font-size:25px;
+	font-style:italic;
+	color:#4d0212;
+	padding-bottom:10px;
+}
+
+.products_overview
+{
+	font-size:14px;
+	font-weight:bold;
+	vertical-align:top;
+	text-align:justify;
+	padding-left:30px;
+	padding-right:30px;
+	padding-bottom:30px;
+	width:50%;
+	color:#000000;
+}
+
+.information
+{
+	background-color:#f9f2a9;
+	color:#3d3e27;
+	border:#d50335 solid 1px;
+	padding:10px 10px 10px 10px;
+	font-weight:bold;
+}
+
+.field
+{
+	color:#012c4a;
+	font-weight:bold;
+}
+
+.welcome
+{
+	color:#2e0443;
+	font-size:20px;
+	padding-right:50px;
+}
+
+.welcome a
+{
+	font-style:italic;
+	text-decoration:none;
+	color:#ff4301;
+}
+
+.welcome a:hover
+{
+	font-style:normal;
+	color:#421101;
+}
+
+.ads_title
+{
+	font-family:Comic Sans MS;
+	font-size:20px;
+	font-style:italic;
+	color:#4d0212;
+	padding-bottom:5px;
+}
