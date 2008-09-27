@@ -1,0 +1,261 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{BBC097F3-3697-4815-B217-525C55A341BE}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>TraveLineTransitServices</RootNamespace>
+    <AssemblyName>TraveLineTransitServices</AssemblyName>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=10.2.3600.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="CrystalDecisions.Enterprise.Framework, Version=10.2.3600.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="CrystalDecisions.Enterprise.InfoStore, Version=10.2.3600.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=10.2.3600.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="CrystalDecisions.Shared, Version=10.2.3600.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="CrystalDecisions.Windows.Forms, Version=10.2.3600.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="DevComponents.DotNetBar2, Version=7.0.0.1, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Services, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\WINDOWS\assembly\GAC_MSIL\System.Web.Services\2.0.0.0__b03f5f7f11d50a3a\System.Web.Services.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Config.cs" />
+    <Compile Include="FormAbout.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormAbout.Designer.cs">
+      <DependentUpon>FormAbout.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormServicesDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormServicesDetails.Designer.cs">
+      <DependentUpon>FormServicesDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="rpCustomerFeedBackInvestigationReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rpCustomerFeedBackInvestigationReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="DataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="FormAssign.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormAssign.Designer.cs">
+      <DependentUpon>FormAssign.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormCorrectiveActionDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormCorrectiveActionDetails.Designer.cs">
+      <DependentUpon>FormCorrectiveActionDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormCustomerFeedBackInvestigationReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormCustomerFeedBackInvestigationReport.Designer.cs">
+      <DependentUpon>FormCustomerFeedBackInvestigationReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormFeedBack.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormFeedBack.Designer.cs">
+      <DependentUpon>FormFeedBack.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormFeedBackInvestigationReports.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormFeedBackInvestigationReports.Designer.cs">
+      <DependentUpon>FormFeedBackInvestigationReports.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormInvestigationDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormInvestigationDetails.Designer.cs">
+      <DependentUpon>FormInvestigationDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormLogin.Designer.cs">
+      <DependentUpon>FormLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormPendingComplaintReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormPendingComplaintReport.Designer.cs">
+      <DependentUpon>FormPendingComplaintReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormTraveLineTransitServices.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormTraveLineTransitServices.Designer.cs">
+      <DependentUpon>FormTraveLineTransitServices.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormViewAllComplaints.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormViewAllComplaints.Designer.cs">
+      <DependentUpon>FormViewAllComplaints.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormViewAllFeedBacks.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormViewAllFeedBacks.Designer.cs">
+      <DependentUpon>FormViewAllFeedBacks.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FormAbout.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FormAbout.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormServicesDetails.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FormServicesDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="rpCustomerFeedBackInvestigationReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rpCustomerFeedBackInvestigationReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormAssign.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FormAssign.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormCorrectiveActionDetails.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FormCorrectiveActionDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormCustomerFeedBackInvestigationReport.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FormCustomerFeedBackInvestigationReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormFeedBack.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FormFeedBack.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormFeedBackInvestigationReports.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FormFeedBackInvestigationReports.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormInvestigationDetails.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FormInvestigationDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormLogin.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FormLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormPendingComplaintReport.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FormPendingComplaintReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormTraveLineTransitServices.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FormTraveLineTransitServices.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormViewAllComplaints.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FormViewAllComplaints.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormViewAllFeedBacks.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FormViewAllFeedBacks.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="rpPendingComplaintReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rpPendingComplaintReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="app.config" />
+    <None Include="DataSet.xsc">
+      <DependentUpon>DataSet.xsd</DependentUpon>
+    </None>
+    <None Include="DataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DataSet.xss">
+      <DependentUpon>DataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="rpPendingComplaintReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rpPendingComplaintReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="DevComponents.DotNetBar2.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Include="Help.chm">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\image.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{967B4E0D-AD0C-4609-AB67-0FA40C0206D8}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
