@@ -54,10 +54,7 @@ void mouseHandler (int mouseEvent, int x, int y, int flags, void* param)
 		if (dragging)
 		{
 			endPoint = cvPoint(x, y);
-			if (!currentImage)
-			{
-				cvReleaseImage(&currentImage);
-			}
+			cvReleaseImage(&currentImage);
 			currentImage = cvCloneImage(originalImage);
 			FilteringImage(currentImage, startPoint, endPoint);
 			cvRectangle(currentImage, startPoint, endPoint, cvScalar(0, 0, 0), 2);
@@ -75,10 +72,7 @@ int main (int argc, char* argv[])
 	cvSetMouseCallback(WINDOW_ID, mouseHandler, 0);
 	cvShowImage(WINDOW_ID, originalImage);
 	cvWaitKey(0);
-	if (!currentImage)
-	{
-		cvReleaseImage(&currentImage);
-	}
+	cvReleaseImage(&currentImage);
 	cvReleaseImage(&originalImage);
 	return 0;
 }
