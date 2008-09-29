@@ -21,6 +21,7 @@ IplImage* resultImage;
 
 void TranslateImage ()
 {
+	// Read the translation distances
 	int tx, ty;
 	cout << "tx = ";
 	cin >> tx;
@@ -28,11 +29,13 @@ void TranslateImage ()
 	cin >> ty;
 	cvReleaseImage(&resultImage);
 	resultImage = cvCloneImage(originalImage);
+	// Fill the region before processing
 	cvRectangle(resultImage, startPoint, endPoint, cvScalar(255, 255, 255), CV_FILLED);
 	for (int y=startPoint.y; y<=endPoint.y; y++)
 	{
 		for (int x=startPoint.x; x<=endPoint.x; x++)
 		{
+			// Calculate the new point
 			CvPoint point = cvPoint(x + tx, y + ty);
 			if (0 <= point.x && point.x < resultImage->width &&
 				0 <= point.y && point.y < resultImage->height)
@@ -43,6 +46,7 @@ void TranslateImage ()
 				unsigned char* p2 = (unsigned char*)resultImage->imageData +
 					point.y * resultImage->widthStep +
 					point.x * resultImage->nChannels;
+				// Set pixel for the new point
 				p2[0] = p1[0];
 				p2[1] = p1[1];
 				p2[2] = p1[2];
@@ -54,20 +58,24 @@ void TranslateImage ()
 
 void ScaleImage ()
 {
+	// Read the scaling ratios
 	double sx, sy;
 	cout << "sx = ";
 	cin >> sx;
 	cout << "sy = ";
 	cin >> sy;
+	// Reset the temporary array
 	for (int i=0; i<MAXS; i++)
 		for (int j=0; j<MAXS; j++) tmp[i][j][0] = -1;
 	cvReleaseImage(&resultImage);
 	resultImage = cvCloneImage(originalImage);
+	// Fill the region before processing
 	cvRectangle(resultImage, startPoint, endPoint, cvScalar(255, 255, 255), CV_FILLED);
 	for (int y=startPoint.y; y<=endPoint.y; y++)
 	{
 		for (int x=startPoint.x; x<=endPoint.x; x++)
 		{
+			// Calculate the new point
 			CvPoint point = cvPoint(
 				x * sx + startPoint.x * (1 - sx),
 				y * sy + startPoint.y * (1 - sy));
@@ -77,17 +85,18 @@ void ScaleImage ()
 				unsigned char* p = (unsigned char*)originalImage->imageData +
 					y * originalImage->widthStep +
 					x * originalImage->nChannels;
+				// Set pixel to the temporary array
 				tmp[point.y][point.x][0] = p[0];
 				tmp[point.y][point.x][1] = p[1];
 				tmp[point.y][point.x][2] = p[2];
 			}
 		}
 	}
+	// Interpolation
 	int maxx = startPoint.x + (endPoint.x - startPoint.x) * sx + 1;
 	if (maxx > resultImage->width) maxx = resultImage->width;
 	int maxy = startPoint.y + (endPoint.y - startPoint.y) * sy + 1;
 	if (maxy > resultImage->height) maxy = resultImage->height;
-	bool t = true;
 	for (int y=startPoint.y; y<maxy; y++)
 	{
 		for (int x=startPoint.x; x<maxx; x++)
@@ -125,6 +134,7 @@ void ScaleImage ()
 					tmp[y][x][2] = tmp[y-1][x][2];
 				}
 			}
+			// After interpolation (if any), set pixel to the result image
 			unsigned char* p = (unsigned char*)resultImage->imageData +
 				y * resultImage->widthStep +
 				x * resultImage->nChannels;
@@ -136,6 +146,7 @@ void ScaleImage ()
 	cvShowImage(WINDOW_ID, resultImage);
 }
 
+// Get the rotated point from the orininal point with specified arguments
 CvPoint GetRotatedPoint (CvPoint point, double sina, double cosa, double dx, double dy)
 {
 	return cvPoint(
@@ -143,6 +154,8 @@ CvPoint GetRotatedPoint (CvPoint point, double sina, double cosa, double dx, dou
 		point.x * sina + point.y * cosa + dy);
 }
 
+// Get the intersect point (if any), between a vertical line acrossing a specified point
+// and a specified line
 CvPoint GetIntersectPoint (CvPoint p1, CvPoint p2, CvPoint point)
 {
 	if (p1.x == p2.x) return cvPoint(-1, -1);
@@ -152,6 +165,7 @@ CvPoint GetIntersectPoint (CvPoint p1, CvPoint p2, CvPoint point)
 	return cvPoint(x, y);
 }
 
+// Check whether a point inside a polygon with 4 specified vertices
 bool CheckPointInside (CvPoint p1, CvPoint p2, CvPoint p3, CvPoint p4, CvPoint point)
 {
 	int miny = resultImage->height;
@@ -185,6 +199,7 @@ bool CheckPointInside (CvPoint p1, CvPoint p2, CvPoint p3, CvPoint p4, CvPoint p
 
 void RotateImage ()
 {
+	// Read the angle to rotate
 	double angle;
 	cout << "angle = ";
 	cin >> angle;
@@ -193,6 +208,7 @@ void RotateImage ()
 	double cosa = cos(angle);
 	double dx = startPoint.x - startPoint.x * cosa + startPoint.y * sina;
 	double dy = startPoint.y - startPoint.x * sina - startPoint.y * cosa;
+	// Reset the temporary array
 	for (int i=0; i<MAXS; i++)
 		for (int j=0; j<MAXS; j++) tmp[i][j][0] = -1;
 	cvReleaseImage(&resultImage);
@@ -206,6 +222,7 @@ void RotateImage ()
 	{
 		for (int x=startPoint.x; x<=endPoint.x; x++)
 		{
+			// Calculate the new point
 			CvPoint point = GetRotatedPoint(cvPoint(x, y), sina, cosa, dx, dy);
 			if (0 <= point.x && point.x < resultImage->width &&
 				0 <= point.y && point.y < resultImage->height)
@@ -214,6 +231,7 @@ void RotateImage ()
 				if (maxx < point.x) maxx = point.x;
 				if (miny > point.y) miny = point.y;
 				if (maxy < point.y) maxy = point.y;
+				// Set pixel to the temporary array
 				unsigned char* p = (unsigned char*)originalImage->imageData +
 					y * originalImage->widthStep +
 					x * originalImage->nChannels;
@@ -223,10 +241,12 @@ void RotateImage ()
 			}
 		}
 	}
+	// Get 4 vertices of the rotated region
 	CvPoint p1 = GetRotatedPoint(startPoint, sina, cosa, dx, dy);
 	CvPoint p2 = GetRotatedPoint(cvPoint(endPoint.x, startPoint.y), sina, cosa, dx, dy);
 	CvPoint p3 = GetRotatedPoint(endPoint, sina, cosa, dx, dy);
-	CvPoint p4 = GetRotatedPoint(cvPoint(startPoint.x, endPoint.y), sina, cosa, dx, dy);	
+	CvPoint p4 = GetRotatedPoint(cvPoint(startPoint.x, endPoint.y), sina, cosa, dx, dy);
+	// Interpolation
 	for (int y=miny; y<=maxy; y++)
 	{
 		for (int x=minx; x<=maxx; x++)
@@ -244,6 +264,7 @@ void RotateImage ()
 				}
 				if (tmp[y][x][0] >= 0)
 				{
+					// After interpolation (if any), set pixel to the result image
 					unsigned char* p = (unsigned char*)resultImage->imageData +
 						y * resultImage->widthStep +
 						x * resultImage->nChannels;
@@ -257,6 +278,7 @@ void RotateImage ()
 	cvShowImage(WINDOW_ID, resultImage);
 }
 
+// Process a mouse event
 void mouseHandler (int mouseEvent, int x, int y, int flags, void* param)
 {
 	switch (mouseEvent)
@@ -264,6 +286,7 @@ void mouseHandler (int mouseEvent, int x, int y, int flags, void* param)
 	case CV_EVENT_LBUTTONDOWN:
 		if (!dragging)
 		{
+			// If left mouse button down, and not dragging, start to drag
 			dragging = true;
 			startPoint = cvPoint(x, y);
 		}
@@ -275,16 +298,20 @@ void mouseHandler (int mouseEvent, int x, int y, int flags, void* param)
 			int x2 = max(startPoint.x, endPoint.x);
 			int y1 = min(startPoint.y, endPoint.y);
 			int y2 = max(startPoint.y, endPoint.y);
+			// Reset the start point to the left-top point
 			startPoint.x = x1;
 			startPoint.y = y1;
+			// Reset the end point to the right-bottom point
 			endPoint.x = x2;
 			endPoint.y = y2;
+			// End dragging
 			dragging = false;
 		}
 		break;
 	case CV_EVENT_MOUSEMOVE:
 		if (dragging)
 		{
+			// If dragging, draw a red rectangle on the selected region
 			endPoint = cvPoint(x, y);
 			cvReleaseImage(&selectedImage);
 			selectedImage = cvCloneImage(originalImage);
@@ -303,10 +330,12 @@ int main (int argc, char* argv[])
 		cout << "Input image not found!" << endl;
 		return 0;
 	}
+	// Create a window to show image
 	cvNamedWindow(WINDOW_ID);
 	cvMoveWindow(WINDOW_ID, 100, 100);
-	cvSetMouseCallback(WINDOW_ID, mouseHandler, 0);
 	cvShowImage(WINDOW_ID, originalImage);
+	// Set mouse callback
+	cvSetMouseCallback(WINDOW_ID, mouseHandler, 0);	
 	bool stop = false;
 	while (!stop)
 	{
@@ -340,6 +369,8 @@ int main (int argc, char* argv[])
 			break;
 		}
 	}
+	// Release all images
+	cvReleaseImage(&resultImage);
 	cvReleaseImage(&originalImage);
 	cvReleaseImage(&selectedImage);
 	return 0;
