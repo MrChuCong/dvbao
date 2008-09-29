@@ -3,6 +3,7 @@
 #include <highgui.h>
 #include <iostream>
 #include <cmath>
+#include <ctime>
 
 using namespace std;
 
@@ -142,14 +143,22 @@ void FirstMethod ()
 				red[p[2]]++;
 			}
 		}
-	}
-	PrintHistogram(1);
+	}	
 }
 
 // Calculate the histogram of the current region
 void CalculateHistogram ()
 {
-	FirstMethod();
+	cout << "Calculating the histogram of the current region ..." << endl;
+	int times;
+	cout << "Times = ";
+	cin >> times;
+	clock_t startTime, endTime;
+	startTime = clock();
+	for (int i=0; i<times; i++) FirstMethod();
+	endTime = clock();
+	cout << "Method 1 - Time: " << (endTime - startTime) / (float)CLOCKS_PER_SEC << endl;
+	PrintHistogram(1);
 }
 
 // Process a mouse event
@@ -161,6 +170,9 @@ void mouseHandler (int mouseEvent, int x, int y, int flags, void* param)
 		if (!dragging)
 		{
 			// If left mouse button down, and not dragging, start to drag
+			cvDestroyWindow("Method 1");
+			cvDestroyWindow("Method 2");
+			cvDestroyWindow("Method 3");
 			dragging = true;
 			isRotated = false;
 			startPoint = cvPoint(x, y);
@@ -179,6 +191,13 @@ void mouseHandler (int mouseEvent, int x, int y, int flags, void* param)
 			// Reset the end point to the right-bottom point
 			endPoint.x = x2;
 			endPoint.y = y2;
+			system("cls");
+			cout << "Selected Region: ";
+			cout << "(" << startPoint.x << ", " << startPoint.y << ") -> ";
+			cout << "(" << endPoint.x << ", " << endPoint.y << ")" << endl;
+			cout << "Press ESC or Q to exit the program." << endl;
+			cout << "Press R to rotate the current region." << endl;
+			cout << "Press H to calculate the histogram of the current region." << endl;
 			// End dragging
 			dragging = false;
 		}
