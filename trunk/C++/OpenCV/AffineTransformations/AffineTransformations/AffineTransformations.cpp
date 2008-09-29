@@ -19,46 +19,6 @@ IplImage* originalImage;
 IplImage* selectedImage;
 IplImage* resultImage;
 
-CvPoint GetTransformedPoint (CvPoint point, CvMat matrix)
-{
-	double oldPos[] = { point.x, point.y, 1 };
-	CvMat oldPosMatrix = cvMat(3, 1, CV_64FC1, oldPos);
-	double newPos[3];
-	CvMat newPosMatrix = cvMat(3, 1, CV_64FC1, newPos);
-	cvMatMul(&matrix, &oldPosMatrix, &newPosMatrix);
-	return cvPoint(newPos[0], newPos[1]);
-}
-
-void Transform (CvMat matrix)
-{
-	//cvReleaseImage(&resultImage);
-	////resultImage = cvCloneImage(originalImage);
-	//resultImage = cvCreateImage(cvGetSize(originalImage), 8, 3);
-	////cvRectangle(resultImage, startPoint, endPoint, cvScalar(255, 255, 255), CV_FILLED);
-	//
-	//for (int y=y1; y<=y2; y++)
-	//{
-	//	for (int x=x1; x<=x2; x++)
-	//	{
-	//		CvPoint point = GetTransformedPoint(cvPoint(x, y), matrix);
-	//		if (0 <= point.x && point.x < resultImage->width &&
-	//			0 <= point.y && point.y < resultImage->height)
-	//		{
-	//			unsigned char* p1 = (unsigned char*)originalImage->imageData +
-	//				y * originalImage->widthStep +
-	//				x * originalImage->nChannels;
-	//			unsigned char* p2 = (unsigned char*)resultImage->imageData +
-	//				point.y * resultImage->widthStep +
-	//				point.x * resultImage->nChannels;
-	//			p2[0] = p1[0];
-	//			p2[1] = p1[1];
-	//			p2[2] = p1[2];
-	//		}
-	//	}
-	//}
-	//cvShowImage(WINDOW_ID, resultImage);
-}
-
 void TranslateImage ()
 {
 	int tx, ty;
@@ -101,6 +61,7 @@ void ScaleImage ()
 	cin >> sy;
 	for (int i=0; i<MAXS; i++)
 		for (int j=0; j<MAXS; j++) tmp[i][j][0] = -1;
+	cvReleaseImage(&resultImage);
 	resultImage = cvCloneImage(originalImage);
 	cvRectangle(resultImage, startPoint, endPoint, cvScalar(255, 255, 255), CV_FILLED);
 	for (int y=startPoint.y; y<=endPoint.y; y++)
@@ -175,23 +136,125 @@ void ScaleImage ()
 	cvShowImage(WINDOW_ID, resultImage);
 }
 
+CvPoint GetRotatedPoint (CvPoint point, double sina, double cosa, double dx, double dy)
+{
+	return cvPoint(
+		point.x * cosa - point.y * sina + dx,
+		point.x * sina + point.y * cosa + dy);
+}
+
+CvPoint GetIntersectPoint (CvPoint p1, CvPoint p2, CvPoint point)
+{
+	if (p1.x == p2.x) return cvPoint(-1, -1);
+	int x = point.x;
+	int y = (p2.y - p1.y) * (x - p1.x) / (p2.x - p1.x) + p1.y;
+	if (y < min(p1.y, p2.y) || y > max(p1.y, p2.y)) x = -1;
+	return cvPoint(x, y);
+}
+
+bool CheckPointInside (CvPoint p1, CvPoint p2, CvPoint p3, CvPoint p4, CvPoint point)
+{
+	int miny = resultImage->height;
+	int maxy = 0;
+	CvPoint p = GetIntersectPoint(p1, p2, point);
+	if (p.x >= 0)
+	{
+		if (miny > p.y) miny = p.y;
+		if (maxy < p.y) maxy = p.y;
+	}
+	p = GetIntersectPoint(p2, p3, point);
+	if (p.x >= 0)
+	{
+		if (miny > p.y) miny = p.y;
+		if (maxy < p.y) maxy = p.y;
+	}
+	p = GetIntersectPoint(p3, p4, point);
+	if (p.x >= 0)
+	{
+		if (miny > p.y) miny = p.y;
+		if (maxy < p.y) maxy = p.y;
+	}
+	p = GetIntersectPoint(p4, p1, point);
+	if (p.x >= 0)
+	{
+		if (miny > p.y) miny = p.y;
+		if (maxy < p.y) maxy = p.y;
+	}
+	return (miny <= point.y) && (point.y <= maxy);
+}
+
 void RotateImage ()
 {
-	/*int x0 = min(startPoint.x, endPoint.x);
-	int y0 = min(startPoint.y, endPoint.y);
 	double angle;
 	cout << "angle = ";
 	cin >> angle;
 	angle = angle * CV_PI / 180;
-	int dx = x0 * cos(angle) - y0 * sin(angle);
-	int dy= x0 * sin(angle) + y0 * cos(angle);
-	double m[] = {
-		cos(angle), -sin(angle), x0 - dx,
-		sin(angle), cos(angle), y0 - dy,
-		0, 0, 1,
-	};
-	CvMat matrix = cvMat(3, 3, CV_64FC1, m);
-	Transform(matrix);*/
+	double sina = sin(angle);
+	double cosa = cos(angle);
+	double dx = startPoint.x - startPoint.x * cosa + startPoint.y * sina;
+	double dy = startPoint.y - startPoint.x * sina - startPoint.y * cosa;
+	for (int i=0; i<MAXS; i++)
+		for (int j=0; j<MAXS; j++) tmp[i][j][0] = -1;
+	cvReleaseImage(&resultImage);
+	resultImage = cvCloneImage(originalImage);
+	cvRectangle(resultImage, startPoint, endPoint, cvScalar(255, 255, 255), CV_FILLED);
+	int minx = resultImage->width;
+	int maxx = 0;
+	int miny = resultImage->height;
+	int maxy = 0;
+	for (int y=startPoint.y; y<=endPoint.y; y++)
+	{
+		for (int x=startPoint.x; x<=endPoint.x; x++)
+		{
+			CvPoint point = GetRotatedPoint(cvPoint(x, y), sina, cosa, dx, dy);
+			if (0 <= point.x && point.x < resultImage->width &&
+				0 <= point.y && point.y < resultImage->height)
+			{
+				if (minx > point.x) minx = point.x;
+				if (maxx < point.x) maxx = point.x;
+				if (miny > point.y) miny = point.y;
+				if (maxy < point.y) maxy = point.y;
+				unsigned char* p = (unsigned char*)originalImage->imageData +
+					y * originalImage->widthStep +
+					x * originalImage->nChannels;
+				tmp[point.y][point.x][0] = p[0];
+				tmp[point.y][point.x][1] = p[1];
+				tmp[point.y][point.x][2] = p[2];
+			}
+		}
+	}
+	CvPoint p1 = GetRotatedPoint(startPoint, sina, cosa, dx, dy);
+	CvPoint p2 = GetRotatedPoint(cvPoint(endPoint.x, startPoint.y), sina, cosa, dx, dy);
+	CvPoint p3 = GetRotatedPoint(endPoint, sina, cosa, dx, dy);
+	CvPoint p4 = GetRotatedPoint(cvPoint(startPoint.x, endPoint.y), sina, cosa, dx, dy);	
+	for (int y=miny; y<=maxy; y++)
+	{
+		for (int x=minx; x<=maxx; x++)
+		{
+			if (CheckPointInside(p1, p2, p3, p4, cvPoint(x, y)))
+			{
+				if (tmp[y][x][0] < 0)
+				{
+					if (tmp[y][x-1][0] >= 0)
+					{
+						tmp[y][x][0] = tmp[y][x-1][0];
+						tmp[y][x][1] = tmp[y][x-1][1];
+						tmp[y][x][2] = tmp[y][x-1][2];
+					}
+				}
+				if (tmp[y][x][0] >= 0)
+				{
+					unsigned char* p = (unsigned char*)resultImage->imageData +
+						y * resultImage->widthStep +
+						x * resultImage->nChannels;
+					p[0] = tmp[y][x][0];
+					p[1] = tmp[y][x][1];
+					p[2] = tmp[y][x][2];
+				}
+			}
+		}
+	}
+	cvShowImage(WINDOW_ID, resultImage);
 }
 
 void mouseHandler (int mouseEvent, int x, int y, int flags, void* param)
