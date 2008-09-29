@@ -21,6 +21,7 @@ IplImage* resultImage;
 
 void TranslateImage ()
 {
+	cout << "Translating the current region ..." << endl;
 	// Read the translation distances
 	int tx, ty;
 	cout << "tx = ";
@@ -58,6 +59,7 @@ void TranslateImage ()
 
 void ScaleImage ()
 {
+	cout << "Scaling the current region ..." << endl;
 	// Read the scaling ratios
 	double sx, sy;
 	cout << "sx = ";
@@ -199,6 +201,7 @@ bool CheckPointInside (CvPoint p1, CvPoint p2, CvPoint p3, CvPoint p4, CvPoint p
 
 void RotateImage ()
 {
+	cout << "Rotating the current region ..." << endl;
 	// Read the angle to rotate
 	double angle;
 	cout << "angle = ";
@@ -304,6 +307,15 @@ void mouseHandler (int mouseEvent, int x, int y, int flags, void* param)
 			// Reset the end point to the right-bottom point
 			endPoint.x = x2;
 			endPoint.y = y2;
+			system("cls");
+			cout << "Selected Region: ";
+			cout << "(" << startPoint.x << ", " << startPoint.y << ") -> ";
+			cout << "(" << endPoint.x << ", " << endPoint.y << ")" << endl;
+			cout << "Press ESC or Q to exit the program." << endl;
+			cout << "Press T to translate the current region." << endl;
+			cout << "Press S to scale the current region." << endl;
+			cout << "Press R to rotate the current region." << endl;
+			cout << "Press L to reload the original image." << endl;
 			// End dragging
 			dragging = false;
 		}
